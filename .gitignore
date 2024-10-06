@@ -60,3 +60,29 @@ bin/
 *.iml
 .idea/
 out/
+
+# Compresed Files 
+*.lz4
+*.zip
+*.rar
+*.7z
+*.gz
+*.tar
+*.tgz
+*.bzip
+*.bzip2
+*.bz2
+*.xz
+*.lzma
+*.cab
+*.iso
+*.dmg
+*.jar
+*.war
+*.ear
+*.sar
+*.rle 
+
+# Logs
+*.log
+*.txt
