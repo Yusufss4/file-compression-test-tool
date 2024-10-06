@@ -8,6 +8,8 @@ public class BenchmarkResult {
     private long timeTaken; // in milliseconds
     private long originalSize; // in bytes
     private long compressedSize; // in bytes
+    private boolean isLossless;
+    private int compressionLevel;
 
     /**
      * Constructs a BenchmarkResult with the specified parameters.
@@ -17,11 +19,14 @@ public class BenchmarkResult {
      * @param originalSize   the size of the original file in bytes
      * @param compressedSize the size of the compressed file in bytes
      */
-    public BenchmarkResult(String algorithmName, long timeTaken, long originalSize, long compressedSize) {
+    public BenchmarkResult(String algorithmName, long timeTaken, long originalSize, long compressedSize,
+            boolean isLossless, int compressionLevel) {
         this.algorithmName = algorithmName;
         this.timeTaken = timeTaken;
         this.originalSize = originalSize;
         this.compressedSize = compressedSize;
+        this.isLossless = isLossless;
+        this.compressionLevel = compressionLevel;
     }
 
     /**
@@ -73,8 +78,10 @@ public class BenchmarkResult {
     @Override
     public String toString() {
         return String.format(
-            "Algorithm: %s\nTime taken: %d ms\nOriginal Size: %d bytes\nCompressed Size: %d bytes\nCompression Ratio: %.2f%%\n",
+                "Algorithm: %s\nLossless: %b\nCompression Level: %d\nTime taken: %d ms\nOriginal Size: %d bytes\nCompressed Size: %d bytes\nCompression Ratio: %.2f%%\n",
             algorithmName,
+                isLossless,
+                compressionLevel,
             timeTaken,
             originalSize,
             compressedSize,

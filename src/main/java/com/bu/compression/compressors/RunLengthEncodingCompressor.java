@@ -10,7 +10,7 @@ public class RunLengthEncodingCompressor extends Compressor {
      * Constructs a RunLengthEncodingCompressor.
      */
     public RunLengthEncodingCompressor() {
-        super("Run-Length Encoding", "rle");
+        super("Run-Length Encoding", "rle"); // This is the constructor of the superclass Compressor
     }
 
     /**

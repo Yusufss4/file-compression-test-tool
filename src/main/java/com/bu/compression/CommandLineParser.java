@@ -12,7 +12,6 @@ import java.util.List;
 public class CommandLineParser {
     private String[] args;
     private boolean verbose = false;
-    private boolean help = false;
     private File inputFile;
     private List<Compressor> compressors = new ArrayList<>();
 
@@ -38,7 +37,6 @@ public class CommandLineParser {
         for (String arg : args) {
             switch (arg) {
                 case "--help":
-                    help = true;
                     printHelp();
                     System.exit(0);
                     break;
@@ -46,7 +44,8 @@ public class CommandLineParser {
                     verbose = true;
                     break;
                 case "--gzip":
-                    compressors.add(new GZipCompressor());
+                    // TODO: Add support getting compression level from command line.
+                    compressors.add(new GZipCompressor(5));
                     break;
                 case "--bzip2":
                     compressors.add(new BZip2Compressor());
@@ -59,13 +58,13 @@ public class CommandLineParser {
                     break;
                 default:
                     if (arg.startsWith("--")) {
-                        System.out.println("Unknown option: " + arg);
+                        System.err.println("Unknown option: " + arg);
                         System.exit(1);
                     } else {
                         // Assume it's the input file
                         inputFile = new File(arg);
                         if (!inputFile.exists()) {
-                            System.out.println("Input file does not exist: " + arg);
+                            System.err.println("Input file does not exist: " + arg);
                             System.exit(1);
                         }
                     }

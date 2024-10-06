@@ -34,18 +34,21 @@ public class CompressionTestTool {
     public void run() {
         for (Compressor compressor : compressors) {
             if (verbose) {
-                System.out.println("Running compressor: " + compressor.getName());
+                System.out.println(compressor);
             }
 
             long startTime = System.currentTimeMillis();
-            compressor.compress(inputFile, new File(inputFile.getName() + "." + compressor.getExtension()));
+            File outputFile = new File(inputFile.getName() + "." + compressor.getExtension());
+            compressor.compress(inputFile, outputFile);
             long endTime = System.currentTimeMillis();
 
-            BenchmarkResult result = new BenchmarkResult(
+            final BenchmarkResult result = new BenchmarkResult(
                 compressor.getName(),
                 endTime - startTime,
                 inputFile.length(),
-                new File(inputFile.getName() + "." + compressor.getExtension()).length()
+                    new File(inputFile.getName() + "." + compressor.getExtension()).length(),
+                    compressor.isLossless(),
+                    compressor.getCompressionLevel()
             );
             results.add(result);
 
