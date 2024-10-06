@@ -16,11 +16,19 @@ public class CommandLineParser {
     private File inputFile;
     private List<Compressor> compressors = new ArrayList<>();
 
+    /**
+     * Constructs a CommandLineParser with the specified arguments.
+     *
+     * @param args Command-line arguments
+     */
     public CommandLineParser(String[] args) {
         this.args = args;
         parseArgs();
     }
 
+    /**
+     * Parses the command-line arguments and initializes the tool's configuration.
+     */
     private void parseArgs() {
         if (args.length == 0) {
             printHelp();
@@ -45,6 +53,9 @@ public class CommandLineParser {
                     break;
                 case "--lz4":
                     compressors.add(new LZ4Compressor());
+                    break;
+                case "--rle":
+                    compressors.add(new RunLengthEncodingCompressor());
                     break;
                 default:
                     if (arg.startsWith("--")) {
@@ -73,6 +84,9 @@ public class CommandLineParser {
         }
     }
 
+    /**
+     * Prints the help message to the console.
+     */
     private void printHelp() {
         System.out.println("Usage: java -jar FileCompressionTestTool.jar [options] <inputfile>");
         System.out.println("Options:");
@@ -81,16 +95,32 @@ public class CommandLineParser {
         System.out.println("  --gzip           Use GZip compression algorithm");
         System.out.println("  --bzip2          Use BZip2 compression algorithm");
         System.out.println("  --lz4            Use LZ4 compression algorithm");
+        System.out.println("  --rle            Use Run-Length Encoding compression algorithm");
     }
 
+    /**
+     * Returns whether verbose output is enabled.
+     *
+     * @return true if verbose output is enabled; false otherwise
+     */
     public boolean isVerbose() {
         return verbose;
     }
 
+    /**
+     * Returns the input file to be compressed.
+     *
+     * @return the input file
+     */
     public File getInputFile() {
         return inputFile;
     }
 
+    /**
+     * Returns the list of compressors to be used.
+     *
+     * @return the list of compressors
+     */
     public List<Compressor> getCompressors() {
         return compressors;
     }

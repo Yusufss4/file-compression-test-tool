@@ -16,6 +16,11 @@ public class CompressionTestTool {
     private List<Compressor> compressors;
     private List<BenchmarkResult> results = new ArrayList<>();
 
+    /**
+     * Constructs a CompressionTestTool with the specified command-line arguments.
+     *
+     * @param args Command-line arguments
+     */
     public CompressionTestTool(String[] args) {
         this.parser = new CommandLineParser(args);
         this.verbose = parser.isVerbose();
@@ -23,6 +28,9 @@ public class CompressionTestTool {
         this.compressors = parser.getCompressors();
     }
 
+    /**
+     * Runs the compression tests using the specified compressors.
+     */
     public void run() {
         for (Compressor compressor : compressors) {
             if (verbose) {

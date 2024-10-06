@@ -9,6 +9,14 @@ public class BenchmarkResult {
     private long originalSize; // in bytes
     private long compressedSize; // in bytes
 
+    /**
+     * Constructs a BenchmarkResult with the specified parameters.
+     *
+     * @param algorithmName  the name of the compression algorithm
+     * @param timeTaken      the time taken to compress in milliseconds
+     * @param originalSize   the size of the original file in bytes
+     * @param compressedSize the size of the compressed file in bytes
+     */
     public BenchmarkResult(String algorithmName, long timeTaken, long originalSize, long compressedSize) {
         this.algorithmName = algorithmName;
         this.timeTaken = timeTaken;
@@ -16,25 +24,50 @@ public class BenchmarkResult {
         this.compressedSize = compressedSize;
     }
 
+    /**
+     * Returns the name of the compression algorithm.
+     *
+     * @return the algorithm name
+     */
     public String getAlgorithmName() {
         return algorithmName;
     }
 
+    /**
+     * Returns the time taken to compress in milliseconds.
+     *
+     * @return the time taken
+     */
     public long getTimeTaken() {
         return timeTaken;
     }
 
+    /**
+     * Returns the size of the original file in bytes.
+     *
+     * @return the original size
+     */
     public long getOriginalSize() {
         return originalSize;
     }
 
+    /**
+     * Returns the size of the compressed file in bytes.
+     *
+     * @return the compressed size
+     */
     public long getCompressedSize() {
         return compressedSize;
     }
 
+    /**
+     * Calculates and returns the compression ratio as a percentage.
+     *
+     * @return the compression ratio
+     */
     public double getCompressionRatio() {
         if (originalSize == 0) return 0;
-        return (double) compressedSize / originalSize;
+        return (double) compressedSize / originalSize * 100;
     }
 
     @Override
@@ -45,7 +78,7 @@ public class BenchmarkResult {
             timeTaken,
             originalSize,
             compressedSize,
-            getCompressionRatio() * 100
+                getCompressionRatio()
         );
     }
 }
