@@ -4,6 +4,8 @@ A Java-based command-line application that benchmarks various file compression a
 
 This project is written for the Boğaziçi University Master of Science in Software Engineering SWE 510.01 Data Structures and Algorithms course to showcase the usage of multiple classes, inheritance, different access permissions, polymorphism, arrays, strings, and multiple constructors using Java.
 
+The repository link of the project can be located via given [link](https://github.com/Yusufss4/file-compression-test-tool)
+
 ---
 
 ## Table of Contents
