@@ -1,6 +1,6 @@
 # File Compression Test Tool
 
-A Java-based command-line application that benchmarks various file compression algorithms. The tool allows you to compress files using different algorithms, measure their performance, and compare results such as compression ratio and time taken. 
+A Java-based command-line application that benchmarks various file compression algorithms. The tool allows you to compress your own data using different algorithms, measure their performance, and compare results such as compression ratio and time taken. 
 
 This project is written for the Boğaziçi University Master of Science in Software Engineering SWE 510.01 Data Structures and Algorithms course to showcase the usage of multiple classes, inheritance, different access permissions, polymorphism, arrays, strings, and multiple constructors using Java.
 
